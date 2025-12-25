@@ -96,6 +96,18 @@ export const slotAPI = {
     const response = await apiRequest("/slots/all");
     return response.json();
   },
+  getSummary: async () => {
+    const response = await apiRequest("/slots/summary");
+    return response.json();
+  },
+  book: async (id: string) => {
+    const response = await apiRequest(`/slots/book/${id}`, { method: "POST" });
+    return response.json();
+  },
+  release: async (id: string) => {
+    const response = await apiRequest(`/slots/release/${id}`, { method: "POST" });
+    return response.json();
+  },
 };
 
 // Admin API
@@ -171,6 +183,21 @@ export const eventAPI = {
     const response = await apiRequest(`/events/delete/${id}`, {
       method: "DELETE",
     });
+    return response.json();
+  },
+};
+
+// Bookings API
+export const bookingsAPI = {
+  create: async (slotId: string, durationMinutes: number) => {
+    const response = await apiRequest("/bookings/create", {
+      method: "POST",
+      body: JSON.stringify({ slotId, durationMinutes }),
+    });
+    return response.json();
+  },
+  myList: async () => {
+    const response = await apiRequest("/bookings/my");
     return response.json();
   },
 };

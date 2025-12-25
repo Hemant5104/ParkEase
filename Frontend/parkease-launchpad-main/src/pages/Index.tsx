@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { ParkingCircle, Clock, Shield, Zap } from "lucide-react";
 import heroImage from "@/assets/hero-parking.jpg";
@@ -16,11 +17,11 @@ const Index = () => {
               <h1 className="text-2xl font-bold tracking-tight text-foreground">PARKEASE</h1>
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="ghost" size="default">
-                Login
+              <Button asChild variant="ghost" size="default">
+                <Link to="/login">Login</Link>
               </Button>
-              <Button variant="accent" size="default">
-                Sign Up
+              <Button asChild variant="accent" size="default">
+                <Link to="/register">Sign Up</Link>
               </Button>
             </div>
           </div>
@@ -43,8 +44,8 @@ const Index = () => {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
-                <Button variant="accent" size="lg" className="shadow-lg">
-                  Get Started Free
+                <Button asChild variant="accent" size="lg" className="shadow-lg">
+                  <Link to="/register">Get Started Free</Link>
                 </Button>
                 <Button variant="outline" size="lg">
                   Learn More
@@ -83,7 +84,7 @@ const Index = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="border-border bg-card hover:shadow-[var(--shadow-smooth)] transition-all duration-300 hover:-translate-y-1 animate-in fade-in zoom-in duration-500"
+                className="border-border bg-card hover:shadow-[var(--shadow-smooth)] transition-all hover:-translate-y-1 animate-in fade-in zoom-in duration-500"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="pt-6 space-y-4">
@@ -111,8 +112,8 @@ const Index = () => {
                 Join thousands of drivers who've already discovered stress-free parking
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
-                <Button variant="accent" size="lg" className="shadow-xl">
-                  Start Parking Smarter
+                <Button asChild variant="accent" size="lg" className="shadow-xl">
+                  <Link to="/register">Start Parking Smarter</Link>
                 </Button>
               </div>
             </CardContent>

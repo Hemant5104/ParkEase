@@ -32,7 +32,9 @@ app.get("/", (req, res) => {
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const slotRoutes = require("./routes/slotroutes");
+const bookingRoutes = require("./routes/booking");
 app.use("/api/slots", slotRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
@@ -42,9 +44,9 @@ const mongoose = require("mongoose");
 
 // Connect to MongoDB
 if (process.env.MONGO_URI) {
-  mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connected"))
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.error("MongoDB Connection Error:", err));
 } else {
   console.error("MONGO_URI is not defined in .env file");
